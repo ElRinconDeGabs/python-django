@@ -1,5 +1,5 @@
 """
-URL configuration for ft project.
+URL configuration for projectsf project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -15,12 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from ft.ft.views import listar_usuarios, crear_usuario
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/', listar_usuarios, name='listar_usuarios'),
-    path('usuarios/nuevo/', crear_usuario, name='crear_usuario'),
-
+    path('accounts/', include('accounts.urls')),
 ]

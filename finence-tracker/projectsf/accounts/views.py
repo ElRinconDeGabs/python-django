@@ -1,6 +1,5 @@
+from django.http import JsonResponse
 from django.shortcuts import render
-
-from django.shortcuts import render, redirect
 from .forms import SignUpForm
 
 def signup_view(request):
@@ -8,7 +7,7 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Cambia por la vista adecuada después de registro
-    else:
-        form = SignUpForm()
-    return render(request, 'accounts/sing_up.html', {'form': form})
+            return JsonResponse({'message': 'User registered successfully!'}, status=200)
+        else:
+            return JsonResponse({'errors': form.errors}, status=400)
+    return render(request, 'register/sing-up.html')  # Asegúrate de que este archivo exista

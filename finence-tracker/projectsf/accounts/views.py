@@ -10,4 +10,4 @@ def signup_view(request):
             return JsonResponse({'message': 'User registered successfully!'}, status=200)
         else:
             return JsonResponse({'errors': form.errors}, status=400)
-    return render(request, 'register/sing-up.html')  # Asegúrate de que este archivo exista
+    return render(request, 'register/singup.html')  # Asegúrate de que este archivo exista

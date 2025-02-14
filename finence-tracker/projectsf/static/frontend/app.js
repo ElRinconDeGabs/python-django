@@ -1,4 +1,4 @@
-import { createApp } from "vue";
+const { createApp } = Vue;
 
 const app = createApp({
   data() {
@@ -26,9 +26,9 @@ const app = createApp({
     },
     async registerUser() {
       if (!this.validateForm()) return;
-  
+
       try {
-        const response = await fetch("/signup/", {
+        const response = await fetch("/accounts/singup/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -47,16 +47,14 @@ const app = createApp({
         console.error("Error registering user:", error);
       }
     },
-  },
-  getCSRFToken() {
-    const cookieValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("csrftoken="))
-      ?.split("=")[1];
-    return cookieValue || "";
+    getCSRFToken() {
+      const cookieValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("csrftoken="))
+        ?.split("=")[1];
+      return cookieValue || "";
+    },
   },
 });
-
-app.mount("#app");
 
 app.mount("#app");
